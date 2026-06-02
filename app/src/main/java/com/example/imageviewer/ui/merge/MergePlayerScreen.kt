@@ -30,6 +30,16 @@ fun MergePlayerScreen(
     var currentIndex by remember { mutableIntStateOf(0) }
     var currentList by remember { mutableStateOf(imageUris) }
     var deletedStack = remember { mutableStateListOf<Pair<Int, android.net.Uri>>() }
+    var lastPainter by remember { mutableStateOf<androidx.compose.ui.graphics.painter.Painter?>(null) }
+
+    // 关键修复：当传入的图片列表发生变化时，同步更新内部状态
+    LaunchedEffect(imageUris) {
+        if (imageUris.isNotEmpty()) {
+            currentList = imageUris
+            currentIndex = 0
+            deletedStack.clear()
+        }
+    }
 
     BackHandler {
         onBack()
@@ -50,7 +60,11 @@ fun MergePlayerScreen(
                     .build(),
                 contentDescription = null,
                 contentScale = ContentScale.Fit,
-                modifier = Modifier.fillMaxSize()
+                modifier = Modifier.fillMaxSize(),
+                placeholder = lastPainter,
+                onSuccess = { state ->
+                    lastPainter = state.painter
+                }
             )
 
             // 点击区域

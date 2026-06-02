@@ -29,6 +29,7 @@ fun DeletionPlayerScreen(
     val images by viewModel.images.collectAsState()
     val selectedIndices by viewModel.selectedIndices.collectAsState()
     var currentIndex by remember { mutableIntStateOf(initialIndex.coerceIn(0, images.size - 1)) }
+    var lastPainter by remember { mutableStateOf<androidx.compose.ui.graphics.painter.Painter?>(null) }
     
     val currentItem = if (images.isNotEmpty()) images[currentIndex] else null
     val isSelected = selectedIndices.contains(currentIndex)
@@ -50,7 +51,11 @@ fun DeletionPlayerScreen(
                     .build(),
                 contentDescription = null,
                 contentScale = ContentScale.Fit,
-                modifier = Modifier.fillMaxSize()
+                modifier = Modifier.fillMaxSize(),
+                placeholder = lastPainter,
+                onSuccess = { state ->
+                    lastPainter = state.painter
+                }
             )
 
             // 点击区域：左侧上一张，右侧下一张

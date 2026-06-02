@@ -14,7 +14,7 @@ object ZipUtils {
             context.contentResolver.openOutputStream(zipUri)?.use { outputStream ->
                 ZipOutputStream(BufferedOutputStream(outputStream)).use { zipOut ->
                     folder.listFiles().forEach { file ->
-                        if (file.isFile) {
+                        if (file.isFile && file.uri != zipUri) {
                             context.contentResolver.openInputStream(file.uri)?.use { input ->
                                 val entry = ZipEntry(file.name)
                                 zipOut.putNextEntry(entry)

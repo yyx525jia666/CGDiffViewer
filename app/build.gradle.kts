@@ -12,8 +12,8 @@ android {
         applicationId = "com.example.imageviewer"
         minSdk = 26
         targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = 2
+        versionName = "1.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -41,7 +41,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.8"
+        kotlinCompilerExtensionVersion = "1.5.11"
     }
     packaging {
         resources {
@@ -81,6 +81,9 @@ dependencies {
     
     // JSON
     implementation("com.google.code.gson:gson:2.10.1")
+
+    // DocumentFile for scoped storage
+    implementation("androidx.documentfile:documentfile:1.1.0")
     
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
