@@ -6,6 +6,7 @@
 <img width="450" alt="8f32fd3505ef74156312fd8670a73982" src="https://github.com/user-attachments/assets/c88bf1b0-b19f-41d9-9e7f-e66ffff467ff" />
 <img width="479" height="378" alt="图标" src="https://github.com/user-attachments/assets/a148fbef-34f1-489f-8a31-9fd97c399cfd" />
 下面都是ai写的...
+
 # 图片序列播放器
 
 一个Android应用，用于播放图片序列，支持多种播放控制功能。
