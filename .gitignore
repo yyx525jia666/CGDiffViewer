@@ -1,0 +1,16 @@
+# 所有项目编译目录
+build/
+*/build/
+app/build/
+
+# Gradle缓存目录
+.gradle/
+
+# AndroidStudio配置
+.idea/
+
+# 本机SDK配置
+local.properties
+
+# 崩溃日志大文件
+*.hprof
